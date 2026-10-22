@@ -24,7 +24,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Prepare site files
-        run: mkdir _site && cp index.html _site/index.html
+        run: mkdir _site && cp index.html arvore-do-crime.html app.css app.js _site/ && cp -r data _site/data
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

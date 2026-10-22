@@ -1,440 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Árvore do crime · Código Penal Militar</title>
-<style>
-:root{color-scheme:dark;--bg:#090f19;--panel:#111b2a;--card:#172438;--line:#30415b;--text:#edf2fa;--muted:#a4b5cc;--green:#62e0b6;--blue:#80b9ff;--amber:#f6ca79;--red:#ff9da8;--radius:18px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:4px}button:disabled{opacity:.5;cursor:default}a{color:var(--blue);text-underline-offset:4px}h1,h2,h3,h4,p{margin-top:0}h1{font-size:clamp(30px,5vw,52px);line-height:1.13;letter-spacing:-1.8px;margin-bottom:14px}h2{font-size:27px;line-height:1.25;letter-spacing:-.6px}h3{font-size:20px;line-height:1.35}small,.muted{color:var(--muted)}strong{color:#fff}.wrap{max-width:1420px;margin:auto;padding:30px 28px 65px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:34px}.brand{font-size:12px;letter-spacing:2px;font-weight:800;color:var(--green)}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:9px 14px}.btn:hover{background:#213149}.btn.primary{background:var(--green);color:#07261d;border-color:var(--green);font-weight:750}.hero{max-width:940px}.hero p{font-size:17px;color:var(--muted);max-width:830px}.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:800;color:var(--green);margin-bottom:12px}.badge{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:11px;letter-spacing:.3px;color:var(--muted);margin:0 5px 5px 0}.notice{border-left:3px solid var(--amber);padding:15px 20px;background:#1c211f;border-radius:0 12px 12px 0;margin:25px 0;color:#dce4e9}.notice p:last-child{margin-bottom:0}.notice.green{border-color:var(--green);background:#112922}.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:30px 0 25px;overflow:auto;padding-bottom:8px}.tab{white-space:nowrap;border:0;background:none;color:var(--muted);padding:11px 16px;border-radius:10px;font-weight:650}.tab[aria-selected=true]{background:#203349;color:white}.tab:hover{color:white}.view[hidden]{display:none}.toolbar{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:24px}.segmented{display:flex;background:#0b1421;padding:4px;border:1px solid var(--line);border-radius:12px;gap:4px}.segmented button{background:none;color:var(--muted);border:0;padding:8px 13px;border-radius:8px}.segmented button[aria-pressed=true]{background:#254137;color:var(--green)}.hint{font-size:12px;color:var(--muted)}.root{position:relative;margin:0 auto 38px;padding:20px 24px;max-width:540px;border:1px solid #376e60;background:linear-gradient(135deg,#15342d,#142335);border-radius:var(--radius);text-align:center}.root h2{margin:0 0 7px;font-size:28px}.root p{font-size:13px;color:#c2d8d0;margin:0}.root:after{content:"";position:absolute;width:1px;height:38px;background:var(--line);left:50%;bottom:-39px}.tree{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;position:relative}.tree:before{content:"";position:absolute;top:-19px;height:1px;left:16.66%;right:16.66%;background:var(--line)}.branch{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);align-self:start;overflow:visible}.branch:before{content:"";position:absolute;top:-19px;height:18px;width:1px;left:50%;background:var(--line)}.branch>summary{cursor:pointer;list-style:none;padding:21px 20px;position:relative}.branch>summary::-webkit-details-marker{display:none}.branch>summary:after{content:"−";position:absolute;right:18px;top:22px;color:var(--muted);font-size:20px}.branch:not([open])>summary:after{content:"+"}.step{font-size:11px;letter-spacing:2px;font-weight:800;display:block;margin-bottom:7px}.branch b{font-size:22px;font-weight:750;display:block;letter-spacing:-.5px}.branch summary .question{display:block;margin-top:7px;color:var(--muted);font-size:13px;max-width:90%}.branch.typical .step,.branch.typical b{color:var(--blue)}.branch.unlawful .step,.branch.unlawful b{color:var(--green)}.branch.guilty .step,.branch.guilty b{color:var(--amber)}.branchbody{padding:0 17px 20px}.nodes{list-style:none;margin:0 0 0 7px;padding:0 0 0 15px;border-left:1px solid var(--line)}.nodes>li{position:relative;padding:0 0 10px}.nodes>li:before{content:"";position:absolute;left:-15px;top:23px;width:14px;height:1px;background:var(--line)}.node{width:100%;border:1px solid #2a3b52;background:var(--card);border-radius:11px;text-align:left;color:var(--text);padding:12px 13px;transition:background .15s,transform .15s;position:relative}.node:hover{background:#223650;transform:translateX(2px)}.node .label{font-weight:700;display:block;line-height:1.4;padding-right:14px}.node .ref{font-size:11px;color:var(--muted);display:block;margin-top:4px}.node:after{content:"↗";position:absolute;right:12px;top:12px;font-size:12px;color:var(--muted)}.node.emphasis{border-color:#46725f;background:#19352e}.node.negative{border-color:#5a4047}.node .tag{font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px}.branchfoot{margin:12px 4px 0;font-size:12px;color:var(--muted)}.legend{display:flex;gap:15px;flex-wrap:wrap;margin:22px 0 0;color:var(--muted);font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--green)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}.card.just{border-top:3px solid var(--green)}.card.excul{border-top:3px solid var(--amber)}.card h3{margin-bottom:8px}.card .sub{color:var(--muted);font-size:13px}.checklist{padding-left:20px}.checklist li{padding:5px 0}.result{margin-top:20px;padding:15px 16px;background:#0c1824;border-radius:10px}.result .over{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:5px}.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin:22px 0}table{width:100%;border-collapse:collapse;min-width:650px;font-size:14px}th,td{text-align:left;vertical-align:top;padding:14px 16px;border-bottom:1px solid var(--line)}th{background:#1a2a3c;font-size:12px;color:#d0e0f2}td{background:#111c2b}tr:last-child td{border-bottom:0}.pill{display:inline-block;font-size:10px;letter-spacing:.7px;text-transform:uppercase;padding:4px 8px;border-radius:7px;background:#25384b;color:var(--blue);margin-bottom:8px}.pill.green{background:#1b3b31;color:var(--green)}.pill.amber{background:#3b3020;color:var(--amber)}.flow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}.flow .card{position:relative}.sourcebox{font-size:13px;line-height:1.7;padding:18px 20px;background:#0c1420;border:1px solid var(--line);border-radius:12px}.sourcebox p{margin-bottom:10px}.sourcebox p:last-child{margin-bottom:0}.cases{display:grid;gap:16px}.case{border:1px solid var(--line);border-radius:15px;padding:20px 22px;background:var(--panel)}.case summary{cursor:pointer;color:var(--green);font-weight:650;padding:10px 0}.answer{border-top:1px solid var(--line);padding-top:14px;margin-top:7px;color:#d5e1ef}.case h3{font-size:18px}.sources{margin-top:35px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.sources ul{padding-left:18px}.sources li{margin:8px 0}.overlay{position:fixed;inset:0;background:#0009;z-index:40;display:none}.overlay.open{display:block}.drawer{position:fixed;right:0;top:0;bottom:0;width:min(600px,100%);background:#101b2b;border-left:1px solid var(--line);padding:30px 28px;overflow-y:auto;z-index:41;transform:translateX(102%);transition:transform .2s;box-shadow:-20px 0 80px #0004}.drawer.open{transform:translateX(0)}.drawerhead{display:flex;justify-content:space-between;gap:15px;align-items:start}.close{background:#203047;border:1px solid var(--line);border-radius:10px;color:white;width:38px;height:38px;font-size:23px;flex:none}.drawer h2{font-size:26px;margin-bottom:12px}.drawer h3{font-size:14px;letter-spacing:.3px;color:var(--green);margin:24px 0 9px}.drawer ul{padding-left:20px}.drawer li{margin:7px 0}.law{white-space:pre-wrap;border-left:3px solid var(--blue);background:#0a1420;padding:16px 18px;border-radius:0 12px 12px 0;font:13px/1.85 system-ui}.example{padding:16px;background:#1c2c36;border-radius:12px;color:#deebf5}.trap{padding:14px 16px;border:1px solid #60494a;border-radius:12px;background:#302026;color:#f1d2d7}.reading{font-size:12px;color:var(--muted)}.footnote{font-size:12px;color:var(--muted);margin-top:22px}.sr{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}
-@media(max-width:900px){.tree{gap:12px}.branch>summary{padding:18px 14px}.branch b{font-size:19px}.branchbody{padding:0 10px 14px}.node{padding:11px 10px}.node .label{font-size:13px}.wrap{padding:22px 18px 45px}}
-@media(max-width:700px){.top{align-items:flex-start}.brand{max-width:150px}.tools .btn{font-size:12px;padding:7px 10px}.tree,.grid2,.flow{grid-template-columns:1fr}.tree{gap:22px}.tree:before,.branch:before,.root:after{display:none}.root{margin-bottom:22px}.branch b{font-size:22px}.node .label{font-size:15px}.branchbody{padding:0 18px 18px}.tabs{margin-top:22px}.tab{padding:10px 12px;font-size:13px}.hero p{font-size:15px}.card{padding:20px}.drawer{padding:24px 20px}}
-@media print{body{background:white;color:#111;font-size:11px}.wrap{max-width:none;padding:0}.tools,.tabs,.toolbar,.overlay,.drawer,.hint{display:none!important}.view[hidden],.view{display:block!important;margin-top:25px}.tree{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card,.branch,.case,.root,.sourcebox,td,th,.notice,.law,.result{background:white!important;color:#111!important;border-color:#aaa!important;box-shadow:none}.node{background:white;color:#111;border-color:#aaa;padding:7px}.node .label{font-size:11px}.node .ref,.muted,.question,.sub,.branchfoot,.sources,.reading,.footnote{color:#444!important}strong{color:#111}h1{font-size:30px}h2{font-size:22px}.step,.branch b,.eyebrow,.brand{color:#111!important}.tree:before,.branch:before,.root:after{display:none}.grid2{gap:12px}.node:after{display:none}.sourcebox,.card,.case{break-inside:avoid}a{color:#111}.answer{color:#111}.notice{border-left-color:#777}.result{border:1px solid #aaa}}
-
-:root{color-scheme:light;--bg:#f3f5f1;--panel:#fff;--card:#f8faf8;--line:#dbe4dd;--text:#20332a;--muted:#64746b;--green:#247556;--blue:#3c7190;--amber:#96651d;--red:#a64f4f;--radius:18px}
-body{background:radial-gradient(ellipse at 88% 0%,#e2eee4 0,transparent 34rem),var(--bg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1280px;padding:26px 34px 72px}h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;color:#20332a}
-h1{font-size:clamp(42px,6.5vw,76px);line-height:.98;letter-spacing:-2.4px}h2{font-size:clamp(25px,3vw,34px)}h3{color:#20332a}strong{color:#243b30}a{color:#386f91}
-.brand,.eyebrow{color:#15543f}.brand{font-size:11px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:850}
-.btn{background:#fff;color:#20332a;border-color:#dbe4dd;border-radius:11px;min-height:42px;font-weight:650;box-shadow:0 2px 6px #1c33280a;transition:all .18s}
-.btn:hover{background:#f1f6f2;color:#15543f;border-color:#b9cec1;transform:translateY(-1px)}.btn.primary{background:#15543f;color:#fff;border-color:#15543f}.btn.primary:hover{background:#0f4634}
-.hero{max-width:none;padding:clamp(28px,5vw,58px);border:1px solid #d9e7dc;border-radius:26px;background:linear-gradient(120deg,#fff,#f4f9f4 72%,#e7f3ea);box-shadow:0 4px 14px #1c33280d}
-.hero:after{content:"CPM · 29—50";position:absolute;right:30px;bottom:18px;color:#1e745824;font:700 clamp(24px,4vw,48px)/1 Georgia,serif;pointer-events:none}.hero>*{position:relative;z-index:1}.hero p{color:#52645b;font-size:clamp(16px,1.7vw,19px)}
-.badge{background:#ffffffc9;border-color:#dbe6de;color:#566a5e;font-weight:650;border-radius:999px}
-.notice{background:#fffaf0!important;border:1px solid #eadfc7;border-left:4px solid #bd8a3d;color:#55482f;border-radius:6px 14px 14px 6px;box-shadow:0 4px 14px #1c33280d}.notice strong{color:#5c431e}
-.notice.green{background:#edf6ef!important;border-color:#cfe1d4;border-left-color:#247556;color:#385648}.notice.green strong{color:#1b563f}
-.tabs{gap:7px;border:1px solid #dbe4dd;border-radius:15px;background:#ffffffd9;padding:7px;box-shadow:0 4px 14px #1c33280d}.tab{color:#68776f;border-radius:10px;font-size:13px;font-weight:700}
-.tab[aria-selected=true]{background:#15543f;color:white;box-shadow:0 3px 9px #15543f2e}.tab:hover{color:#15543f;background:#edf4ef}
-.segmented{background:#eaf0eb;border-color:#dce5de;border-radius:12px}.segmented button{color:#68776f;font-size:13px;font-weight:650}.segmented button[aria-pressed=true]{background:#fff;color:#15543f;box-shadow:0 1px 5px #193e2b1f}
-.root{max-width:570px;padding:25px 30px;border:1px solid #b9d4c2;background:linear-gradient(135deg,#e8f4eb,#f7faf6);border-radius:20px;box-shadow:0 4px 14px #1c33280d}.root h2{color:#15543f;font:750 29px/1.1 Georgia,serif;letter-spacing:2px}.root p{color:#557262}
-.root:after,.tree:before,.branch:before{background:#bdcfc2}.tree{gap:20px}
-.branch{background:#fff;border-color:#dbe4dd;border-radius:18px;box-shadow:0 4px 14px #1c33280d;transition:box-shadow .2s,transform .2s}.branch:hover{box-shadow:0 14px 34px #1c332814;transform:translateY(-2px)}
-.branch.typical{border-top:3px solid #3c7190}.branch.unlawful{border-top:3px solid #247556}.branch.guilty{border-top:3px solid #c1832a}
-.branch>summary{padding:21px 21px 18px}.branch>summary:after{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#f0f4f1;color:#64766b;top:19px}
-.step{font-size:10px;letter-spacing:1.5px;font-weight:850}.branch b{font:600 25px/1.18 Georgia,serif;color:#20332a}
-.branch.typical .step{color:#3c7190}.branch.typical b{color:#315e79}.branch.unlawful .step{color:#247556}.branch.unlawful b{color:#15543f}.branch.guilty .step{color:#96651d}.branch.guilty b{color:#875616}
-.branch summary .question{color:#64746b;font-size:12px}.nodes{border-color:#dce5de}.nodes>li:before{background:#dce5de}
-.node{background:#fbfcfa;border-color:#e1e8e3;border-radius:11px;color:#20332a;transition:all .16s}.node:hover{background:#f0f7f2;border-color:#b9d4c2;transform:translateX(2px);box-shadow:0 3px 10px #1c33280f}
-.node .label{font-size:13px;font-weight:720}.node .ref,.branchfoot,.legend,.hint,.reading,.footnote{color:#64746b}.node:after{color:#7d9185}.node.emphasis{border-color:#a8cdb7;background:#edf6ef}.node.negative{border-color:#e4c9c9;background:#fff9f8}.node .tag{color:#96651d;font-weight:800}
-.card,.case{background:#fff;border-color:#dbe4dd;border-radius:18px;box-shadow:0 4px 14px #1c33280d}.card{padding:clamp(20px,3vw,29px)}.card.just{border-top:3px solid #247556}.card.excul{border-top:3px solid #bf8a39}.card .sub{color:#64746b}
-.checklist li::marker{color:#247556}.result{background:#f0f6f1;border:1px solid #deebe0;border-radius:12px}.result strong{color:#15543f}
-.tablewrap{border-color:#dbe4dd;border-radius:14px;box-shadow:0 4px 14px #1c33280d}th{background:#edf3ee;color:#3d5748;font-size:10px;letter-spacing:.6px;text-transform:uppercase}td{background:#fff;color:#485b50}td:first-child{color:#20332a;font-weight:700}tbody tr:hover td{background:#f7faf7}
-.pill{background:#edf2f8;color:#426784;font-weight:850}.pill.green{background:#e8f3eb;color:#236749}.pill.amber{background:#fbf1de;color:#845817}
-.sourcebox{background:#f4f7f4;border-color:#dbe4dd;border-radius:14px;color:#4c5e54}.case{border-radius:15px}.case summary{color:#15543f;font-weight:700}.answer{border-color:#dbe4dd;color:#506258}
-.sources{border-color:#d8e1db;color:#64746b}.sources strong{color:#15543f}.overlay{background:#16271f47;backdrop-filter:blur(3px)}
-.drawer{background:#fff;border-color:#dbe4dd;box-shadow:-18px 0 55px #192f2429}.drawerhead{border-color:#dbe4dd}.close{background:#f2f6f2;border-color:#dbe4dd;color:#20332a}.close:hover{background:#e8f1e9}.drawer h3{color:#15543f}
-.law{border-left-color:#3c7190;background:#f1f6f8;color:#344d5a;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.example{background:#edf5ef;border:1px solid #dbeadd;color:#3e5b49}.trap{border-color:#ecd5d2;background:#fff5f3;color:#75413d}
-@media(max-width:980px){.wrap{padding-left:23px;padding-right:23px}.tree{gap:14px}.branch>summary{padding:19px 15px 16px}.branch b{font-size:22px}.branchbody{padding:0 12px 16px}.node{padding:11px 10px}.node .label{font-size:12px}}
-@media(max-width:700px){.wrap{padding:17px 16px 46px}.top{align-items:flex-start;margin-bottom:22px}.brand{max-width:150px;font-size:10px}.tools{gap:6px}.tools .btn{min-height:38px;font-size:11px;padding:7px 10px}.hero{padding:27px 22px 30px;border-radius:19px}.hero:after{right:17px;bottom:10px;font-size:20px;opacity:.7}h1{font-size:clamp(40px,12vw,58px);letter-spacing:-1.6px}.hero p{font-size:15px}.notice{padding:14px 15px;margin:17px 0 21px;font-size:13px}.tabs{margin:19px -3px 23px;border-radius:12px}.tab{padding:10px 12px;font-size:11px}.tree,.grid2,.flow{grid-template-columns:1fr}.tree{gap:17px}.tree:before,.branch:before,.root:after{display:none}.root{margin-bottom:20px;padding:21px}.branch b{font-size:24px}.node .label{font-size:13px}.card{padding:21px}.case{padding:18px}.drawer{padding:23px 19px}.drawer h2{font-size:25px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5f1">
+  <meta name="description" content="Trilha didática de Direito Penal Militar para PMAL Soldado, com consulta legal, treino e revisão pessoal.">
+  <title>Direito Penal Militar · Caderno de Combate</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <div class="top">
-    <div class="brand">CADERNO DE COMBATE<br><span style="color:var(--muted);font-weight:500;font-size:10px;letter-spacing:1px">DIREITO PENAL MILITAR</span></div>
-    <div class="tools">
-      <button class="btn" type="button" id="printBtn">Imprimir</button>
-      <button class="btn primary" type="button" id="downloadBtn">Baixar HTML</button>
-    </div>
-  </div>
-  <div class="hero">
-    <div class="eyebrow">Mapa interativo · CPM</div>
-    <h1>Árvore do crime.</h1>
-    <p>Do fato à responsabilidade penal. Explore os elementos, identifique o plano atingido por cada excludente e compare a leitura neoclássica com o finalismo.</p>
-    <span class="badge">Arts. 29–50 do CPM</span>
-    <span class="badge">Teoria neoclássica</span>
-    <span class="badge">Teoria diferenciadora</span>
-    <span class="badge">Consulta em 22/10/2026</span>
-  </div>
-  <div class="notice">
-    <strong>Duas teorias, duas perguntas.</strong> A <b>neoclássica</b> organiza os elementos do delito e a culpabilidade. A <b>diferenciadora</b> distingue os dois estados de necessidade: um justifica o fato; o outro afasta a culpabilidade. Elas podem coexistir.
-  </div>
-</header>
-
-<nav class="tabs" role="tablist" aria-label="Modos de estudo">
-  <button class="tab" id="tab-tree" role="tab" aria-controls="tree-view" aria-selected="true" data-view="tree">01 · Árvore</button>
-  <button class="tab" id="tab-necessity" role="tab" aria-controls="necessity-view" aria-selected="false" tabindex="-1" data-view="necessity">02 · Teoria diferenciadora</button>
-  <button class="tab" id="tab-theories" role="tab" aria-controls="theories-view" aria-selected="false" tabindex="-1" data-view="theories">03 · Neoclássica × finalista</button>
-  <button class="tab" id="tab-cases" role="tab" aria-controls="cases-view" aria-selected="false" tabindex="-1" data-view="cases">04 · Casos de fixação</button>
-</nav>
-
-<main>
-<section class="view" id="tree-view" role="tabpanel" aria-labelledby="tab-tree">
-  <div class="toolbar">
-    <div>
-      <div class="hint" style="margin-bottom:7px">Modelo de leitura da árvore</div>
-      <div class="segmented" aria-label="Comparar modelos">
-        <button type="button" data-model="neo" aria-pressed="true">Neoclássico</button>
-        <button type="button" data-model="final" aria-pressed="false">Finalista · comparação</button>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Caderno de Combate, início">
+        <span class="brand-mark">CC</span>
+        <span><strong>CADERNO DE COMBATE</strong><small>DIREITO PENAL MILITAR</small></span>
+      </a>
+      <div class="course-chip"><span class="status-dot"></span> PMAL <b>·</b> SOLDADO</div>
+      <nav class="nav-list">
+        <a href="#inicio" data-nav="inicio"><span class="nav-icon">⌂</span>Visão geral</a>
+        <a href="#trilha" data-nav="trilha"><span class="nav-icon">↗</span>Trilha de estudo</a>
+        <a href="#arvore" data-nav="arvore"><span class="nav-icon">⑂</span>Árvore do crime</a>
+        <a href="#lei" data-nav="lei"><span class="nav-icon">§</span>Lei por artigo</a>
+        <a href="#treino" data-nav="treino"><span class="nav-icon">✓</span>Treino autoral</a>
+        <a href="#caderno" data-nav="caderno"><span class="nav-icon">▤</span>Meu caderno</a>
+        <a href="#fontes" data-nav="fontes"><span class="nav-icon">↗</span>Fontes e método</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-caption">SEU ESTUDO FICA</div>
+        <p>Neste navegador. Exporte uma cópia para levar seu progresso.</p>
+        <a class="sidebar-link" href="#caderno">Backup e privacidade <span>→</span></a>
       </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">CC</span><b>Caderno de Combate</b></div>
+        <div class="breadcrumb" id="breadcrumb">Direito Penal Militar <span>/</span> Visão geral</div>
+        <form class="global-search" id="global-search" role="search">
+          <label class="sr-only" for="global-query">Buscar aulas, artigos e temas</label>
+          <span aria-hidden="true">⌕</span>
+          <input id="global-query" type="search" placeholder="Buscar aula, artigo ou tema…" autocomplete="off">
+          <kbd>⌘ K</kbd>
+          <div class="search-results" id="search-results" hidden></div>
+        </form>
+        <div class="topbar-tag"><span class="status-dot"></span> Estudo individual</div>
+      </header>
+      <main id="app" tabindex="-1" aria-live="polite">
+        <div class="loading"><span class="spinner"></span>Preparando seu material de estudo…</div>
+      </main>
+      <footer class="site-footer"><span>Material de estudo · PMAL Soldado</span><a href="#fontes">Fontes, método e revisão jurídica</a></footer>
     </div>
-    <div class="tools">
-      <button class="btn" id="expandBtn" type="button">Expandir ramos</button>
-      <button class="btn" id="collapseBtn" type="button">Recolher ramos</button>
-    </div>
   </div>
-  <p class="reading" id="modelNote"></p>
-  <div class="root">
-    <div class="eyebrow" style="margin-bottom:5px">Conceito analítico tripartido</div>
-    <h2>CRIME</h2>
-    <p>Fato típico + ilicitude + culpabilidade</p>
-  </div>
-  <div class="tree" id="tree"></div>
-  <div class="legend">
-    <span><i class="dot" style="background:var(--blue)"></i>Fato típico</span>
-    <span><i class="dot"></i>Ilicitude</span>
-    <span><i class="dot" style="background:var(--amber)"></i>Culpabilidade</span>
-    <span>Clique em um nó para abrir explicação, artigo e exemplo.</span>
-  </div>
-  <div class="notice green">
-    <strong>Antes de chamar o fato de militar:</strong> identifique o tipo penal e o enquadramento nos arts. 9º ou 10 do CPM. A árvore analisa a estrutura do delito; a condição de militar do agente não dispensa esse enquadramento.
-  </div>
-  <p class="footnote">A punibilidade é examinada separadamente: reconhecer os elementos do delito não elimina a necessidade de verificar prescrição e outras causas extintivas. A ausência de culpabilidade também não torna automaticamente lícito o fato; a eventual medida de segurança exige seus próprios pressupostos.</p>
-</section>
-
-<section class="view" id="necessity-view" role="tabpanel" aria-labelledby="tab-necessity" hidden>
-  <div class="eyebrow">Dois caminhos jurídicos</div>
-  <h2>Estado de necessidade no CPM.</h2>
-  <p class="muted">Não decida apenas comparando o valor dos bens. Cada modalidade possui requisitos próprios, que precisam estar presentes no caso.</p>
-  <div class="grid2">
-    <article class="card just">
-      <span class="pill green">Justificante · art. 43</span>
-      <h3>O ordenamento permite o fato.</h3>
-      <p class="sub">Atinge a <strong>ilicitude</strong>. Conexão com o art. 42, I.</p>
-      <ul class="checklist">
-        <li>Preservar <strong>direito próprio ou alheio</strong>.</li>
-        <li>Perigo <strong>certo e atual</strong>.</li>
-        <li>Perigo que o agente <strong>não provocou</strong>.</li>
-        <li>Não poder evitá-lo de outro modo.</li>
-        <li>Mal causado <strong>consideravelmente inferior</strong> ao evitado, por natureza e importância.</li>
-        <li>Agente <strong>não legalmente obrigado a enfrentar</strong> o perigo.</li>
-      </ul>
-      <div class="result"><span class="over">Se preenchidos os requisitos</span><strong>Afasta a ilicitude.</strong><br>O fato é justificado.</div>
-      <button class="btn" style="margin-top:17px" data-detail="necessidade43">Ler o art. 43 e o exemplo ↗</button>
-    </article>
-    <article class="card excul">
-      <span class="pill amber">Exculpante · art. 39</span>
-      <h3>O fato permanece ilícito, mas o agente é desculpado.</h3>
-      <p class="sub">Atinge a <strong>culpabilidade</strong>, por inexigibilidade de conduta diversa.</p>
-      <ul class="checklist">
-        <li>Proteger <strong>direito próprio</strong> ou de pessoa ligada por <strong>estreito parentesco ou afeição</strong>.</li>
-        <li>Perigo <strong>certo e atual</strong>, não provocado.</li>
-        <li>Não poder evitá-lo de outro modo.</li>
-        <li>Pode haver sacrifício de direito alheio <strong>até superior</strong> ao protegido.</li>
-        <li>Não ser <strong>razoavelmente exigível conduta diversa</strong>.</li>
-      </ul>
-      <div class="result"><span class="over">Se preenchidos os requisitos</span><strong>Afasta a culpabilidade.</strong><br>Não transforma a conduta em lícita.</div>
-      <button class="btn" style="margin-top:17px" data-detail="necessidade39">Ler o art. 39 e o exemplo ↗</button>
-    </article>
-  </div>
-
-  <div class="tablewrap">
-    <table>
-      <thead><tr><th>Critério</th><th>Art. 43 · justificante</th><th>Art. 39 · exculpante</th></tr></thead>
-      <tbody>
-        <tr><td>Plano atingido</td><td>Ilicitude</td><td>Culpabilidade</td></tr>
-        <tr><td>Quem pode ser protegido</td><td>O próprio agente ou terceiro, sem exigência do vínculo afetivo do art. 39</td><td>O próprio agente ou pessoa ligada por estreito parentesco ou afeição</td></tr>
-        <tr><td>Comparação dos males</td><td>Causado consideravelmente inferior ao evitado</td><td>Admite sacrifício de direito alheio até superior, com os demais requisitos</td></tr>
-        <tr><td>Fundamento decisivo</td><td>Justificação da conduta nas condições legais</td><td>Inexigibilidade razoável de outra conduta</td></tr>
-        <tr><td>Conduta fica lícita?</td><td>Sim, pela justificante reconhecida</td><td>Não, apenas por essa exculpante</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="notice">
-    <strong>Igualdade dos bens não gera exculpação automática.</strong> A ausência de um requisito do art. 43 não prova o preenchimento do art. 39. É necessário testar a segunda hipótese de forma independente.
-  </div>
-  <div class="flow">
-    <article class="card"><h3>Não justificou pelo art. 43?</h3><p>Examine se há outra justificante ou se o caso atende integralmente à exculpante do art. 39. Não passe diretamente de “mal igual ou maior” para “isento”.</p></article>
-    <article class="card"><h3>Era exigível o sacrifício?</h3><p>A hipótese do art. 41 pode permitir <strong>atenuação</strong>. Atenuar a pena é diferente de excluir a culpabilidade.</p><button class="btn" data-detail="art41">Examinar art. 41 ↗</button></article>
-  </div>
-</section>
-
-<section class="view" id="theories-view" role="tabpanel" aria-labelledby="tab-theories" hidden>
-  <div class="eyebrow">Organização doutrinária</div>
-  <h2>Onde ficam dolo e culpa?</h2>
-  <div class="grid2">
-    <article class="card">
-      <span class="pill amber">Neoclássica · causal-valorativa</span>
-      <h3>Culpabilidade psicológico-normativa.</h3>
-      <p>À dimensão psicológica acrescenta-se a reprovação pessoal, incluindo a exigibilidade de outra conduta. <strong>Dolo e culpa permanecem na culpabilidade</strong>, na organização tradicional desse modelo.</p>
-      <p>O <strong>dolo normativo</strong> é explicado com a consciência atual da ilicitude em seu interior. Isso não autoriza desconsiderar a redação específica dos arts. 35 e 36 do CPM.</p>
-      <p class="muted">O tipo admite elementos normativos e especiais elementos subjetivos. “Neoclássica” não significa que o tipo seja sempre puramente objetivo.</p>
-    </article>
-    <article class="card">
-      <span class="pill">Finalista · comparação</span>
-      <h3>Dolo e culpa na estrutura do fato típico.</h3>
-      <p>A conduta passa a ser compreendida finalisticamente. O dolo é tratado como <strong>natural</strong>, separado da consciência da ilicitude; a organização da culpa também se desloca para o fato típico.</p>
-      <p>A culpabilidade fica estruturada por <strong>imputabilidade, potencial consciência da ilicitude e exigibilidade de conduta diversa</strong>.</p>
-      <p class="muted">A comparação ajuda a perceber o deslocamento. Ela não altera a redação do CPM nem importa automaticamente o regime do CP comum.</p>
-    </article>
-  </div>
-  <div class="tablewrap">
-    <table>
-      <thead><tr><th>Ponto</th><th>Leitura neoclássica</th><th>Leitura finalista</th></tr></thead>
-      <tbody>
-        <tr><td>Dolo e culpa</td><td>Culpabilidade</td><td>Fato típico</td></tr>
-        <tr><td>Dolo</td><td>Normativo, com consciência atual da ilicitude na formulação tradicional</td><td>Natural; consciência da ilicitude separada</td></tr>
-        <tr><td>Culpabilidade</td><td>Psicológico-normativa</td><td>Normativa pura</td></tr>
-        <tr><td>Consciência da ilicitude</td><td>Ligada ao dolo normativo</td><td>Potencial e autônoma na culpabilidade</td></tr>
-        <tr><td>Exigibilidade de conduta diversa</td><td>Integra a reprovação pessoal</td><td>Permanece como elemento da culpabilidade</td></tr>
-        <tr><td>Estado de necessidade diferenciador</td><td colspan="2">É outra classificação: separa justificação da exculpação e não é sinônimo de causalismo ou finalismo.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="notice">
-    <strong>Como usar isso no CPM:</strong> a leitura causalista neoclássica aparece na doutrina e em julgados militares. O próprio debate jurisdicional também dialoga com categorias finalistas. Por isso, a árvore identifica o modelo adotado, e a resolução deve respeitar o dispositivo, a orientação exigida na questão e a Constituição.
-  </div>
-  <div class="sourcebox">
-    <strong>Referência doutrinária e jurisprudencial conferida</strong>
-    <p>O STM, na Apelação <strong>0000024-05.2015.7.03.0203</strong>, reproduzida em sua Revista de Doutrina e Jurisprudência, v. 28, n. 1, pp. 113–114 da publicação, discute a estrutura neoclássica do CPM e o diálogo com categorias finalistas no tratamento do erro.</p>
-    <p>Aqui a referência sustenta a <strong>comparação dos modelos</strong>; não é apresentada como tese vinculante de adoção exclusiva e uniforme de uma teoria para todo dispositivo.</p>
-  </div>
-</section>
-
-<section class="view" id="cases-view" role="tabpanel" aria-labelledby="tab-cases" hidden>
-  <div class="eyebrow">Aplicar antes de memorizar</div>
-  <h2>Em qual ramo você examinaria o caso?</h2>
-  <p class="muted">Situações autorais de estudo. Tente localizar o plano e os requisitos antes de revelar o comentário.</p>
-  <div class="cases">
-    <article class="case">
-      <span class="pill green">Caso 01 · perigo atual</span>
-      <h3>Danificar um portão para salvar uma vida.</h3>
-      <p>Diante de incêndio atual que não provocou, o agente danifica um portão para retirar uma pessoa. Não havia meio menos lesivo, o dano é consideravelmente inferior ao mal evitado e o agente não era legalmente obrigado a enfrentar o perigo.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Ilicitude → estado de necessidade justificante, art. 43.</strong> Os fatos foram construídos para apresentar seus requisitos. A justificante reconhecida torna lícita a conduta. A avaliação concreta depende de prova dessas circunstâncias.</div></details>
-    </article>
-    <article class="case">
-      <span class="pill amber">Caso 02 · exigibilidade</span>
-      <h3>O perigo envolve o próprio filho.</h3>
-      <p>Em perigo certo e atual, inevitável por outro meio e não provocado, alguém protege o filho sacrificando direito alheio de importância igual ou superior. Discute-se se seria razoavelmente exigível comportamento diferente.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Culpabilidade → art. 39.</strong> O parentesco e o conflito de bens não resolvem sozinhos o caso. É indispensável verificar a inexigibilidade razoável de outra conduta. Se reconhecida a exculpante, o fato não se torna lícito apenas por isso.</div></details>
-    </article>
-    <article class="case">
-      <span class="pill amber">Caso 03 · ordem superior</span>
-      <h3>“Foi uma ordem” basta?</h3>
-      <p>Um superior dá ordem de serviço cujo objeto é uma prática manifestamente criminosa. O inferior a executa alegando apenas a disciplina hierárquica.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Culpabilidade → obediência hierárquica e seu limite, art. 38, § 2º.</strong> A hipótese não protege automaticamente o inferior. O artigo prevê sua punição também quando a ordem tem objeto manifestamente criminoso ou há excesso. Examine ainda os demais pressupostos de responsabilidade.</div></details>
-    </article>
-    <article class="case">
-      <span class="pill">Caso 04 · legítima defesa</span>
-      <h3>Repelir uma agressão não é revidar depois.</h3>
-      <p>Terminada a agressão e afastado o perigo de renovação, o agente procura o antigo agressor para puni-lo.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Ilicitude → art. 44.</strong> A legítima defesa exige agressão injusta atual ou iminente. Vingança posterior não satisfaz esse requisito somente porque existiu agressão antes.</div></details>
-    </article>
-    <article class="case">
-      <span class="pill">Caso 05 · resultado não ocorrido</span>
-      <h3>O agente podia continuar, mas decidiu parar.</h3>
-      <p>Depois de iniciar a execução, o agente voluntariamente desiste de prosseguir, embora pudesse continuar. Os atos anteriores já causaram uma lesão típica.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Execução → desistência voluntária, art. 31.</strong> Responde pelos atos já praticados, se configurarem delito. O instituto não apaga automaticamente a lesão anterior. Compare com tentativa: nesta, a não consumação decorre de circunstâncias alheias à vontade.</div></details>
-    </article>
-    <article class="case">
-      <span class="pill amber">Caso 06 · capacidade</span>
-      <h3>Doença diagnosticada significa inimputabilidade?</h3>
-      <p>O agente possui diagnóstico psiquiátrico. A questão não informa se, no momento da ação, ele podia compreender a ilicitude ou agir de acordo com esse entendimento.</p>
-      <details><summary>Revelar o caminho</summary><div class="answer"><strong>Culpabilidade → imputabilidade, art. 48.</strong> O diagnóstico, sozinho, não comprova os requisitos. Examine a capacidade ao tempo da conduta e o nexo com a condição mental. A diminuição considerável tem consequência própria no parágrafo único.</div></details>
-    </article>
-  </div>
-</section>
-</main>
-
-<footer class="sources">
-  <strong>Fontes e leitura</strong>
-  <ul>
-    <li><a href="https://www2.camara.leg.br/legin/fed/declei/1960-1969/decreto-lei-1001-21-outubro-1969-376258-normaatualizada-pe.html" target="_blank" rel="noopener noreferrer">Código Penal Militar atualizado · Câmara dos Deputados</a> — arts. 29–50, especialmente 38–46.</li>
-    <li><a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del1001compilado.htm" target="_blank" rel="noopener noreferrer">CPM compilado · Planalto</a> — confronto da literalidade.</li>
-    <li><a href="https://dspace.stm.jus.br/bitstream/handle/123456789/134873/Revista%20de%20doutrina%20e%20jurisprud%C3%AAncia%20do%20Superior%20Tribunal%20Militar%20Volume%2028%20N%C3%BAmero1.pdf?isAllowed=y&amp;sequence=1" target="_blank" rel="noopener noreferrer">STM · Revista de Doutrina e Jurisprudência, v. 28, n. 1</a> — Apelação 0000024-05.2015.7.03.0203, pp. 113–114 da publicação.</li>
-    <li><a href="https://www.mpm.mp.br/wp-content/uploads/sites/5/2023/05/gabarito-bage.pdf" target="_blank" rel="noopener noreferrer">MPM · espelho de correção</a> — distinção entre estado de necessidade justificante e exculpante.</li>
-  </ul>
-  <p>Lei literal, organização doutrinária e exemplos estão identificados separadamente. A classificação em uma teoria não altera a redação legal. Sem estatísticas de incidência ou gabaritos oficiais atribuídos aos exemplos autorais.</p>
-</footer>
-</div>
-
-<div class="overlay" id="overlay" aria-hidden="true"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="detailTitle" aria-hidden="true" inert>
-  <div class="drawerhead"><div><div class="eyebrow" id="detailGroup">Elemento do crime</div><h2 id="detailTitle"></h2></div><button class="close" type="button" id="closeDrawer" aria-label="Fechar explicação">×</button></div>
-  <div id="detailContent"></div>
-</aside>
-<div class="sr" id="live" aria-live="polite"></div>
-
-<script>
-(()=>{
-"use strict";
-const lawURL="https://www2.camara.leg.br/legin/fed/declei/1960-1969/decreto-lei-1001-21-outubro-1969-376258-normaatualizada-pe.html";
-const law={
-29:"Art. 29. O resultado de que depende a existência do crime somente é imputável a quem lhe deu causa. Considera-se causa a ação ou omissão sem a qual o resultado não teria ocorrido.\n\n§ 1º A superveniência de causa relativamente independente exclui a imputação quando, por si só, produziu o resultado. Os fatos anteriores, imputam-se, entretanto, a quem os praticou.\n\n§ 2º A omissão é relevante como causa quando o omitente devia e podia agir para evitar o resultado. O dever de agir incumbe a quem tenha por lei obrigação de cuidado, proteção ou vigilância; a quem, de outra forma, assumiu a responsabilidade de impedir o resultado; e a quem, com seu comportamento anterior, criou o risco de sua superveniência.",
-30:"Art. 30. Diz-se o crime:\nI - consumado, quando nele se reúnem todos os elementos de sua definição legal;\nII - tentado, quando, iniciada a execução, não se consuma por circunstâncias alheias à vontade do agente.\n\nParágrafo único. Pune-se a tentativa com a pena correspondente ao crime, diminuída de um a dois terços, podendo o juiz, no caso de excepcional gravidade, aplicar a pena do crime consumado.",
-31:"Art. 31. O agente que, voluntariamente, desiste de prosseguir na execução ou impede que o resultado se produza, só responde pelos atos já praticados.",
-32:"Art. 32. Quando, por ineficácia absoluta do meio empregado ou por absoluta impropriedade do objeto, é impossível consumar-se o crime, nenhuma pena é aplicável.",
-33:"Art. 33. Diz-se o crime:\nI - doloso, quando o agente quis o resultado ou assumiu o risco de produzi-lo;\nII - culposo, quando o agente, deixando de empregar a cautela, atenção, ou diligência ordinária, ou especial, a que estava obrigado em face das circunstâncias, não prevê o resultado que podia prever ou, prevendo-o, supõe levianamente que não se realizaria ou que poderia evitá-lo.\n\nParágrafo único. Salvo os casos expressos em lei, ninguém pode ser punido por fato previsto como crime, senão quando o pratica dolosamente.",
-34:"Art. 34. Pelos resultados que agravam especialmente as penas só responde o agente quando os houver causado, pelo menos, culposamente.",
-35:"Art. 35. A pena pode ser atenuada ou substituída por outra menos grave quando o agente, salvo em se tratando de crime que atente contra o dever militar, supõe lícito o fato, por ignorância ou erro de interpretação da lei, se escusáveis.",
-36:"Art. 36. É isento de pena quem, ao praticar o crime, supõe, por erro plenamente escusável, a inexistência de circunstância de fato que o constitui ou a existência de situação de fato que tornaria a ação legítima.\n\n§ 1º Se o erro deriva de culpa, a este título responde o agente, se o fato é punível como crime culposo.\n\n§ 2º Se o erro é provocado por terceiro, responderá este pelo crime, a título de dolo ou culpa, conforme o caso.",
-38:"Art. 38. Não é culpado quem comete o crime:\na) sob coação irresistível ou que lhe suprima a faculdade de agir segundo a própria vontade;\nb) em estrita obediência a ordem direta de superior hierárquico, em matéria de serviços.\n\n§ 1º Responde pelo crime o autor da coação ou da ordem.\n\n§ 2º Se a ordem do superior tem por objeto a prática de ato manifestamente criminoso, ou há excesso nos atos ou na forma da execução, é punível também o inferior hierárquico.",
-39:"Art. 39. Não é igualmente culpado quem, para proteger direito próprio ou de pessoa a quem está ligado por estreitas relações de parentesco ou afeição, contra perigo certo e atual, que não provocou, nem podia de outro modo evitar, sacrifica direito alheio, ainda quando superior ao direito protegido, desde que não lhe era razoavelmente exigível conduta diversa.",
-40:"Art. 40. Nos crimes em que há violação do dever militar, o agente não pode invocar coação irresistível senão quando física ou material.",
-41:"Art. 41. Nos casos do art. 38, letras a e b, se era possível resistir à coação, ou se a ordem não era manifestamente ilegal; ou, no caso do art. 39, se era razoavelmente exigível o sacrifício do direito ameaçado, o juiz, tendo em vista as condições pessoais do réu, pode atenuar a pena.",
-42:"Art. 42. Não há crime quando o agente pratica o fato:\nI - em estado de necessidade;\nII - em legítima defesa;\nIII - em estrito cumprimento do dever legal;\nIV - em exercício regular de direito.\n\nParágrafo único. Não há igualmente crime quando o comandante de navio, aeronave ou praça de guerra, na iminência de perigo ou grave calamidade, compele os subalternos, por meios violentos, a executar serviços e manobras urgentes, para salvar a unidade ou vidas, ou evitar o desânimo, o terror, a desordem, a rendição, a revolta ou o saque.",
-43:"Art. 43. Considera-se em estado de necessidade quem pratica o fato para preservar direito seu ou alheio, de perigo certo e atual, que não provocou, nem podia de outro modo evitar, desde que o mal causado, por sua natureza e importância, é consideravelmente inferior ao mal evitado, e o agente não era legalmente obrigado a arrostar o perigo.",
-44:"Art. 44. Entende-se em legítima defesa quem, usando moderadamente dos meios necessários, repele injusta agressão, atual ou iminente, a direito seu ou de outrem.",
-45:"Art. 45. O agente que, em qualquer dos casos de exclusão de crime, excede culposamente os limites da necessidade, responde pelo fato, se este é punível, a título de culpa.\n\nParágrafo único. Não é punível o excesso quando resulta de escusável surpresa ou perturbação de ânimo, em face da situação.",
-46:"Art. 46. O juiz pode atenuar a pena ainda quando punível o fato por excesso doloso.",
-47:"Art. 47. Deixam de ser elementos constitutivos do crime:\nI - a qualidade de superior ou a de inferior hierárquico, quando não conhecida do agente;\nII - a qualidade de superior ou a de inferior hierárquico, a de oficial de dia, de serviço ou de quarto, ou a de sentinela, vigia ou plantão, quando a ação é praticada em repulsa a agressão.",
-48:"Art. 48. Não é imputável quem, no momento da ação ou da omissão, não possui a capacidade de entender o caráter ilícito do fato ou de determinar-se de acordo com esse entendimento, em virtude de doença mental, de desenvolvimento mental incompleto ou retardado.\n\nParágrafo único. Se a doença ou a deficiência mental não suprime, mas diminui consideravelmente a capacidade de entendimento da ilicitude do fato ou a de autodeterminação, não fica excluída a imputabilidade, mas a pena pode ser reduzida de 1/3 (um terço) a 2/3 (dois terços), sem prejuízo do disposto no art. 113 deste Código.",
-49:"Art. 49. Não é igualmente imputável o agente que, por embriaguez completa proveniente de caso fortuito ou força maior, era, ao tempo da ação ou da omissão, inteiramente incapaz de entender o caráter criminoso do fato ou de determinar-se de acordo com esse entendimento.\n\nParágrafo único. A pena pode ser reduzida de um a dois terços, se o agente por embriaguez proveniente de caso fortuito ou força maior, não possuía, ao tempo da ação ou da omissão, a plena capacidade de entender o caráter criminoso do fato ou de determinar-se de acordo com esse entendimento.",
-50:"Art. 50. O menor de 18 (dezoito) anos é penalmente inimputável, ficando sujeito às normas estabelecidas na legislação especial."
-};
-const data={
-conduta:{title:"Conduta",group:"Fato típico",ref:"Ação ou omissão",text:"Comportamento humano juridicamente relevante. No esquema causal-valorativo, a análise começa pela ação ou omissão; a alocação do dolo e da culpa não é a mesma do finalismo.",points:["Não basta um resultado danoso para concluir por crime.","Na omissão imprópria, testar dever e possibilidade concreta de agir.","A coação física que elimina completamente a ação voluntária é discutida doutrinariamente no plano da própria conduta; o CPM também possui disciplina expressa nos arts. 38 e 40. Não misture esse debate com a coação moral."],arts:[29,40],trap:"“Devia agir” não substitui “podia agir”. Os dois requisitos do art. 29, § 2º, precisam ser demonstrados.",example:"O responsável podia e devia impedir um resultado, mas se omite. Identifique a fonte do dever e a possibilidade real antes de imputar o resultado."},
-resultado:{title:"Resultado e consumação",group:"Fato típico",ref:"Arts. 29–30",text:"O resultado naturalístico integra a análise quando exigido pela definição do delito. A consumação ocorre quando se reúnem todos os elementos legais; nem todo tipo exige uma alteração naturalística separada da conduta.",points:["Distinguir resultado naturalístico de lesão ou perigo ao bem jurídico.","Não exigir um resultado material autônomo para todos os crimes.","Se a execução começou e a consumação não ocorreu, investigar a causa da não consumação."],arts:[29,30],trap:"A tentativa no CPM admite, em excepcional gravidade, aplicação da pena do crime consumado.",example:"Se o tipo exige morte e ela não ocorre, ainda é preciso saber se houve tentativa, desistência, intervenção eficaz ou impossibilidade."},
-nexo:{title:"Nexo causal e omissão relevante",group:"Fato típico",ref:"Art. 29, §§ 1º–2º",text:"Conecta o comportamento ao resultado nos delitos em que essa vinculação é necessária. O art. 29 adota a fórmula da condição sem a qual o resultado não teria ocorrido.",points:["Causa superveniente relativamente independente só rompe a imputação do resultado nas condições do § 1º: deve produzi-lo por si só.","Os fatos anteriores continuam atribuídos a quem os praticou.","Garantidor: obrigação legal; assunção de responsabilidade; ou criação anterior do risco."],arts:[29,34],trap:"Causalidade não dispensa culpabilidade: resultado agravador exige, pelo menos, culpa, conforme o art. 34.",example:"Uma causa posterior não exclui automaticamente a imputação. Pergunte se, por si só, produziu o resultado."},
-tipicidade:{title:"Tipicidade e elementos do tipo",group:"Fato típico",ref:"Definição legal · art. 47",text:"É a correspondência do fato à definição penal, com seus elementos e condições. Na leitura neoclássica, o tipo também admite elementos normativos e especiais elementos subjetivos; não é uma figura sempre puramente objetiva.",points:["Identificar sujeito, verbo, objeto, contexto e finalidade específica eventualmente exigida.","Elementos normativos exigem valoração, como a qualidade ou o caráter indevido previstos em cada tipo.","Para crime militar, o enquadramento nos arts. 9º ou 10 é verificação indispensável, conforme a hipótese."],arts:[47],trap:"Uniforme, local militar ou vítima militar, isoladamente, não substituem todos os requisitos do tipo e do enquadramento legal.",example:"Se a qualidade de superior integra o delito, examine o art. 47 e o conhecimento dessa qualidade nas condições legais."},
-execucao:{title:"Tentativa e interrupção voluntária",group:"Fato típico · percurso da execução",ref:"Arts. 30–32",text:"Esses institutos modificam o enquadramento da execução e a responsabilidade pelos atos praticados. Não são, por isso, uma quinta justificante do art. 42.",points:["Tentativa: execução iniciada e não consumação por causa alheia à vontade.","Desistência: agente voluntariamente para de prosseguir.","Arrependimento eficaz: impede efetivamente o resultado.","Crime impossível: meio absolutamente ineficaz ou objeto absolutamente impróprio."],arts:[30,31,32],trap:"Desistência e arrependimento eficaz não apagam os delitos que os atos já praticados possam constituir. Art. 31-A foi vetado.",example:"Se ele podia continuar e decidiu parar, compare desistência com tentativa, cujo impedimento é externo à vontade."},
-dolo:{title:"Dolo ou culpa",group:"Posição varia conforme o modelo",ref:"Arts. 33–34",text:"No modelo neoclássico desta árvore, dolo e culpa são examinados na culpabilidade. No finalismo comparativo, deslocam-se para o fato típico. A literalidade dos arts. 33 e 34 continua sendo o ponto de partida.",points:["Dolo: quer o resultado ou assume o risco de produzi-lo.","Culpa: falta de cautela nas condições do art. 33, II; só se pune quando houver previsão legal.","Na formulação neoclássica tradicional, fala-se em dolo normativo, com consciência atual da ilicitude.","No finalismo, o dolo é natural, separado da potencial consciência da ilicitude."],arts:[33,34],trap:"Dolo eventual não é igual a culpa consciente: assumir o risco difere de prever e confiar levianamente na não ocorrência ou evitação.",example:"A gravidade da lesão não demonstra, sozinha, vontade de matar ou assunção do risco de morte."},
-ilicitude:{title:"Ilicitude",group:"Segundo elemento",ref:"Art. 42",text:"É a contrariedade do fato típico ao ordenamento. Uma justificante reconhecida afasta essa contrariedade nas condições legais.",points:["Fato típico não equivale automaticamente a fato ilícito.","Investigue estado de necessidade justificante, legítima defesa, estrito cumprimento do dever legal e exercício regular de direito.","O parágrafo único do art. 42 prevê situação específica de comando; não é autorização geral de violência disciplinar."],arts:[42],trap:"Excluir a ilicitude não é o mesmo que desculpar pessoalmente o agente por uma conduta que continua ilícita.",example:"Uma lesão pode ser típica e, ainda assim, justificada por legítima defesa se todos os seus requisitos se realizarem."},
-necessidade43:{title:"Estado de necessidade justificante",group:"Ilicitude · teoria diferenciadora",ref:"Arts. 42, I, e 43",text:"O art. 43 justifica o fato: ele afasta a ilicitude, não apenas a reprovação pessoal do agente.",points:["Direito próprio ou alheio.","Perigo certo e atual, não provocado, inevitável por outro meio.","Mal causado consideravelmente inferior ao evitado.","Ausência de obrigação legal de enfrentar o perigo."],arts:[43],trap:"“Consideravelmente inferior” é mais específico que simplesmente “não superior”. Não substitua o requisito pela fórmula memorizada do CP comum.",example:"Danificar um portão para salvar uma pessoa de incêndio, sem outra alternativa e preenchidos os demais requisitos, é situação didática de exame do art. 43."},
-defesa:{title:"Legítima defesa",group:"Ilicitude",ref:"Arts. 42, II, e 44",text:"Permite repelir agressão injusta atual ou iminente a direito próprio ou alheio, usando moderadamente os meios necessários.",points:["Agressão injusta: não simples antipatia ou provocação verbal que automaticamente autorize qualquer reação.","Atual ou iminente: não vingança posterior.","Meio necessário e uso moderado precisam ser verificados no caso."],arts:[44],trap:"A condição policial não dispensa necessidade e moderação. Ter sido agredido antes não autoriza punição privada depois.",example:"Reação durante agressão injusta é hipótese de análise; perseguir o agressor depois, quando cessada a ameaça, pode ser revide."},
-dever:{title:"Estrito cumprimento do dever legal",group:"Ilicitude",ref:"Art. 42, III",text:"A conduta decorre de dever imposto pelo ordenamento e deve permanecer estritamente dentro de seus limites.",points:["Dever precisa ter fundamento jurídico.","O ato concreto deve respeitar as condições e limites da atuação.","Abuso ou excesso não é justificado só pela existência do dever."],arts:[42,45,46],trap:"“Cumprir serviço” e “cumprir qualquer ordem” não são sinônimos de estrito cumprimento do dever legal.",example:"Uma intervenção legal deve ser examinada com seus pressupostos; uma violência desnecessária não se torna lícita apenas porque ocorreu durante serviço."},
-direito:{title:"Exercício regular de direito",group:"Ilicitude",ref:"Art. 42, IV",text:"O ordenamento autoriza o exercício do direito, desde que o agente respeite seus limites. Regularidade é elemento decisivo.",points:["Identificar qual direito está sendo exercido.","Verificar consentimentos, regras e limites jurídicos pertinentes.","Não estender a justificante ao abuso."],arts:[42,45,46],trap:"A existência de um direito não dá liberdade para qualquer meio de exercê-lo.",example:"Uma atividade autorizada pode ser regular; causar dano além das condições juridicamente permitidas exige outra análise."},
-excesso:{title:"Excesso nas justificantes",group:"Controle dos limites",ref:"Arts. 45–46",text:"A situação inicialmente justificante não protege automaticamente a parcela de comportamento que ultrapassa seus limites.",points:["Culposo: responde se o fato é punível a título de culpa.","Escusável: excesso não punível por surpresa ou perturbação de ânimo escusáveis nas condições legais.","Doloso: o art. 46 permite atenuar a pena; não determina absolvição."],arts:[45,46],trap:"Atenuação, ausência de punição e justificante são consequências diferentes.",example:"Reconhecer uma agressão inicial não encerra a análise: é necessário examinar necessidade e moderação da reação e seu eventual excesso."},
-imputabilidade:{title:"Imputabilidade",group:"Culpabilidade",ref:"Arts. 48–50",text:"Capacidade de compreender o caráter ilícito e de determinar-se conforme essa compreensão, com os requisitos legais e referência ao momento da ação ou omissão.",points:["Art. 48: condição mental e perda de capacidade no fato.","Capacidade consideravelmente diminuída: possível redução de 1/3 a 2/3, sem exclusão automática.","Art. 49: embriaguez completa fortuita ou por força maior com incapacidade inteira.","Art. 50: menor de 18 anos é inimputável; arts. 51 e 52 revogados."],arts:[48,49,50],trap:"Diagnóstico isolado não basta. Embriaguez voluntária não se converte em fortuita porque houve perda de memória.",example:"Para agente com transtorno mental, pergunte o que acontecia com sua compreensão e autodeterminação no momento da conduta."},
-exigibilidade:{title:"Exigibilidade de conduta diversa",group:"Culpabilidade",ref:"Arts. 38–41",text:"Investiga se era razoável exigir do agente comportamento conforme o direito nas condições do caso. Integra o juízo de reprovação pessoal.",points:["Observar as hipóteses legais de coação e obediência.","Art. 39: necessidade exculpante tem requisitos próprios.","Art. 40: restrição específica da coação em crime de violação do dever militar.","Art. 41: certas situações levam à possível atenuação, não à exclusão."],arts:[38,39,40,41],trap:"Dificuldade, aflição ou vínculo familiar não provam automaticamente inexigibilidade. Os fatos e os requisitos precisam ser demonstrados.",example:"Uma situação extrema pode exigir exame da possibilidade real de outra conduta; o nome “necessidade” não decide o enquadramento."},
-necessidade39:{title:"Estado de necessidade exculpante",group:"Culpabilidade · teoria diferenciadora",ref:"Art. 39",text:"O fundamento é a inexigibilidade de outra conduta. O agente é desculpado; a hipótese não justifica o fato por si.",points:["Protege direito próprio ou de pessoa com estreito vínculo de parentesco ou afeição.","Perigo certo e atual, não provocado e inevitável por outro meio.","Admite sacrifício de direito alheio até superior ao protegido.","Exige que não fosse razoavelmente exigível outra conduta."],arts:[39,41],trap:"Mal igual ou maior não assegura isenção. Também não se pode apagar o vínculo pessoal exigido quando o direito protegido é de terceiro.",example:"Num conflito extremo envolvendo o próprio filho, examine cada requisito do art. 39. Se reconhecido, o efeito é sobre culpabilidade, não sobre licitude."},
-coacao:{title:"Coação e regra do dever militar",group:"Culpabilidade · limites próprios do CPM",ref:"Arts. 38, a, e 40",text:"O CPM disciplina coação como causa de não culpabilidade e traz restrição nos crimes de violação do dever militar.",points:["Art. 38, a: coação irresistível ou que suprima a faculdade de agir segundo a própria vontade.","Autor da coação responde pelo crime, conforme § 1º.","Art. 40: nos crimes de violação do dever militar, a invocação é restrita à coação física ou material.","Coação física absoluta também recebe análise doutrinária como exclusão da própria conduta; identifique o plano usado na questão."],arts:[38,40],trap:"Não generalize a coação moral irresistível do CP a todos os crimes militares, apagando o art. 40.",example:"Se a questão for sobre deserção e coação, o caráter de violação do dever militar torna indispensável examinar a restrição legal."},
-obediencia:{title:"Obediência hierárquica",group:"Culpabilidade",ref:"Art. 38, b e §§",text:"A hipótese legal exige estrita obediência a ordem direta de superior hierárquico, em matéria de serviços, observados seus limites.",points:["Ordem direta e vínculo de superioridade.","Matéria de serviço e execução estrita.","Se o objeto é manifestamente criminoso ou há excesso, o § 2º prevê punição também do inferior.","O superior autor da ordem responde na forma do § 1º."],arts:[38],trap:"Hierarquia não transforma ordem manifestamente criminosa em escusa universal. “Manifestamente criminoso” é a expressão atual do § 2º.",example:"A ordem de praticar crime patente não afasta responsabilidade do executor apenas porque foi dada por um superior."},
-erros:{title:"Erro de direito e erro de fato",group:"Culpabilidade e efeitos específicos do erro",ref:"Arts. 35–36",text:"O CPM conserva regime e linguagem próprios. A posição doutrinária do erro deve ser acompanhada de seu efeito legal; não substitua o texto pelos arts. 20 e 21 do CP.",points:["Art. 35: ignorância/interpretação escusável da lei pode atenuar ou levar a pena menos grave; há ressalva para crime contra dever militar.","Art. 36: erro plenamente escusável sobre fato ou situação legitimante leva à isenção prevista.","Se o erro deriva de culpa, verificar modalidade culposa expressamente prevista.","Na visão neoclássica tradicional, a consciência atual da ilicitude integra o dolo normativo; no finalismo, a potencial consciência tem posição autônoma."],arts:[35,36],trap:"O art. 35 não contém uma regra geral escrita de isenção idêntica ao erro de proibição do CP comum.",example:"Imaginar por erro de fato plenamente escusável uma agressão inexistente é diferente de conhecer os fatos e interpretar equivocadamente a lei."},
-consciencia:{title:"Potencial consciência da ilicitude",group:"Culpabilidade · comparação finalista",ref:"Categoria doutrinária",text:"Na estrutura finalista, é a possibilidade de o agente compreender a proibição do fato nas suas condições. É distinta do conhecimento técnico de números de artigos.",points:["Fica autônoma em relação ao dolo natural.","Compare com a consciência atual situada no dolo normativo da formulação neoclássica.","O uso comparativo não reescreve o regime do art. 35 do CPM."],arts:[35],trap:"Não trocar rótulos teóricos como se isso, sozinho, determinasse isenção ou condenação no CPM.",example:"Para resolver erro sobre a proibição, identifique os fatos, a norma aplicável, o grau de evitabilidade e o regime jurídico exigido na questão."},
-art41:{title:"Atenuação não é exclusão",group:"Consequência distinta",ref:"Art. 41",text:"O artigo prevê possibilidade de atenuar a pena em hipóteses que não devem ser confundidas automaticamente com as dirimentes integrais.",points:["Ler literalmente as remissões aos arts. 38 e 39.","No caso da necessidade, o dispositivo menciona razoável exigibilidade do sacrifício do direito ameaçado.","Trata de faculdade de atenuação, consideradas as condições pessoais; não declara o fato lícito."],arts:[41],trap:"“Pode atenuar” não equivale a “deve absolver”. O art. 41 tem redação própria que não deve ser harmonizada por troca silenciosa de palavras.",example:"Uma questão pode descrever circunstâncias insuficientes à exculpante, mas juridicamente relevantes para a pena."}
-};
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let model="neo",lastFocus=null;
-function node(id,tag="",emphasis=false){
- const d=data[id];
- return `<li><button type="button" class="node${emphasis?" emphasis":""}" data-detail="${id}">${tag?`<span class="tag">${tag}</span>`:""}<span class="label">${esc(d.title)}</span><span class="ref">${esc(d.ref)}</span></button></li>`;
-}
-function branch(cls,step,title,question,items,foot){
- return `<details class="branch ${cls}" open><summary><span class="step">${step}</span><b>${title}</b><span class="question">${question}</span></summary><div class="branchbody"><ul class="nodes">${items}</ul><p class="branchfoot">${foot}</p></div></details>`;
-}
-function renderTree(){
- const typical=["conduta","resultado","nexo","tipicidade","execucao"];
- const guilty=["imputabilidade"];
- if(model==="final"){typical.splice(1,0,"dolo");guilty.push("consciencia")}
- else guilty.push("dolo");
- guilty.push("exigibilidade","coacao","obediencia","necessidade39","erros");
- document.getElementById("tree").innerHTML=
- branch("typical","01 / ESTRUTURA","Fato típico","O fato corresponde a uma definição penal?",typical.map(id=>node(id)).join(""),"Resultado e nexo naturalísticos são exigidos conforme o tipo. Nem todo delito exige resultado material autônomo.")+
- branch("unlawful","02 / CONTRARIEDADE","Ilicitude","O fato típico está juridicamente justificado?",node("ilicitude")+node("necessidade43","teoria diferenciadora",true)+node("defesa")+node("dever")+node("direito")+node("excesso"),"Uma justificante reconhecida afasta a ilicitude. O art. 42, parágrafo único, traz hipótese específica de comando.")+
- branch("guilty","03 / REPROVAÇÃO","Culpabilidade","É possível reprovar pessoalmente o agente?",guilty.map(id=>node(id,id==="necessidade39"?"teoria diferenciadora":"",id==="necessidade39")).join(""),model==="neo"?"Modelo psicológico-normativo: a posição de dolo e culpa está indicada segundo a leitura neoclássica.":"Comparação finalista: dolo/culpa no fato típico; potencial consciência da ilicitude autônoma.");
- document.getElementById("modelNote").textContent=model==="neo"?
- "Leitura neoclássica tradicional do CPM: dolo/culpa na culpabilidade. Clique nos nós para distinguir organização doutrinária e efeito legal.":
- "Modo comparativo finalista. A mudança de posição dos elementos é didática e não altera a redação nem o regime específico do CPM.";
- document.querySelectorAll("[data-model]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.model===model)));
-}
-function openDetail(id,trigger){
- const d=data[id];if(!d)return;
- lastFocus=trigger||document.activeElement;
- document.getElementById("detailGroup").textContent=d.group;
- document.getElementById("detailTitle").textContent=d.title;
- document.getElementById("detailContent").innerHTML=
- `<p>${esc(d.text)}</p><h3>O que verificar</h3><ul>${d.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>`+
- `<h3>Pegadinha de leitura</h3><div class="trap">${esc(d.trap)}</div>`+
- `<h3>Exemplo autoral</h3><div class="example">${esc(d.example)}</div>`+
- `<h3>Lei literal · dispositivos relacionados</h3>`+
- d.arts.map(n=>`<div class="law" style="margin:12px 0">${esc(law[n])}</div>`).join("")+
- `<p class="reading" style="margin-top:16px">Remissões editoriais de alteração suprimidas. Transcrição selecionável. <a href="${lawURL}" target="_blank" rel="noopener noreferrer">Conferir fonte oficial ↗</a></p>`;
- const drawer=document.getElementById("drawer");
- drawer.inert=false;drawer.classList.add("open");drawer.setAttribute("aria-hidden","false");drawer.scrollTop=0;
- document.getElementById("overlay").classList.add("open");
- document.body.style.overflow="hidden";
- document.querySelector(".wrap").inert=true;
- document.getElementById("closeDrawer").focus();
-}
-function closeDetail(){
- const drawer=document.getElementById("drawer");
- drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");drawer.inert=true;
- document.getElementById("overlay").classList.remove("open");
- document.querySelector(".wrap").inert=false;
- document.body.style.overflow="";
- if(lastFocus&&lastFocus.isConnected)lastFocus.focus();
-}
-function selectView(key,focus=false){
- document.querySelectorAll(".tab").forEach(t=>{
-  const on=t.dataset.view===key;t.setAttribute("aria-selected",String(on));t.tabIndex=on?0:-1;if(on&&focus)t.focus();
- });
- document.querySelectorAll(".view").forEach(v=>v.hidden=v.id!==key+"-view");
-}
-document.addEventListener("click",e=>{
- const detail=e.target.closest("[data-detail]");if(detail)openDetail(detail.dataset.detail,detail);
- const tab=e.target.closest("[data-view]");if(tab)selectView(tab.dataset.view);
- const mode=e.target.closest("[data-model]");if(mode){model=mode.dataset.model;renderTree()}
-});
-document.querySelector(".tabs").addEventListener("keydown",e=>{
- const tabs=[...document.querySelectorAll(".tab")],i=tabs.indexOf(document.activeElement);
- if(i<0)return;let n=i;
- if(e.key==="ArrowRight")n=(i+1)%tabs.length;
- else if(e.key==="ArrowLeft")n=(i+tabs.length-1)%tabs.length;
- else if(e.key==="Home")n=0;
- else if(e.key==="End")n=tabs.length-1;
- else return;
- e.preventDefault();selectView(tabs[n].dataset.view,true);
-});
-document.getElementById("closeDrawer").addEventListener("click",closeDetail);
-document.getElementById("overlay").addEventListener("click",closeDetail);
-document.addEventListener("keydown",e=>{
- const drawer=document.getElementById("drawer");
- if(!drawer.classList.contains("open"))return;
- if(e.key==="Escape"){e.preventDefault();closeDetail()}
- if(e.key==="Tab"){
-  const focusables=[...drawer.querySelectorAll('button,a[href],[tabindex="0"]')].filter(x=>!x.disabled);
-  const first=focusables[0],last=focusables[focusables.length-1];
-  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
-  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
- }
-});
-document.getElementById("expandBtn").onclick=()=>document.querySelectorAll(".branch").forEach(d=>d.open=true);
-document.getElementById("collapseBtn").onclick=()=>document.querySelectorAll(".branch").forEach(d=>d.open=false);
-document.getElementById("printBtn").onclick=()=>window.print();
-let beforePrint=[];
-window.addEventListener("beforeprint",()=>{
- beforePrint=[...document.querySelectorAll("details")].map(d=>[d,d.open]);
- document.querySelectorAll("details").forEach(d=>d.open=true);
-});
-window.addEventListener("afterprint",()=>beforePrint.forEach(([d,open])=>d.open=open));
-document.getElementById("downloadBtn").onclick=()=>{
- const clone=document.documentElement.cloneNode(true);
- clone.querySelector(".wrap").removeAttribute("inert");
- const drawer=clone.querySelector("#drawer");drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");drawer.setAttribute("inert","");
- clone.querySelector("#overlay").classList.remove("open");
- clone.querySelector("body").style.overflow="";
- clone.querySelector("#detailContent").innerHTML="";
- const blob=new Blob(["<!DOCTYPE html>\n"+clone.outerHTML],{type:"text/html;charset=utf-8"});
- const url=URL.createObjectURL(blob),a=document.createElement("a");
- a.href=url;a.download="Arvore_do_Crime_CPM.html";document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),3000);
- document.getElementById("live").textContent="Download do HTML solicitado.";
-};
-renderTree();
-})();
-</script>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>
